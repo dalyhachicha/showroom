@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:showroom/app/data/theme/color_theme.dart';
 import 'package:showroom/app/data/theme/text_theme.dart';
+import 'package:showroom/app/modules/onboarding/controllers/onboarding_controller.dart';
 
 class DonePage extends StatelessWidget {
-  const DonePage({Key? key}) : super(key: key);
+  DonePage({Key? key}) : super(key: key);
+  final OnboardingController onBoardingController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +49,12 @@ class DonePage extends StatelessWidget {
                     ),
                     SizedBox(height: 48),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        onBoardingController.userModel.storePhoneNumber();
+                        onBoardingController.userModel.saveUserIsLoggedIn();
+                        onBoardingController.userModel.completeData();
+                        onBoardingController.saveUserToFirebase();
+                      },
                       child: Container(
                           padding: EdgeInsets.symmetric(
                               vertical: 10, horizontal: 60),

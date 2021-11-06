@@ -3,12 +3,15 @@ import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:showroom/app/data/theme/color_theme.dart';
 import 'package:showroom/app/data/theme/text_theme.dart';
+import 'package:showroom/app/modules/onboarding/controllers/onboarding_controller.dart';
 import 'package:showroom/app/modules/onboarding/views/widgets/next_button.dart';
 
 class MobilePage extends StatelessWidget {
   final PageController pageController;
   MobilePage(this.pageController);
   final _phoneController = TextEditingController();
+
+  final OnboardingController onboardingController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -46,17 +49,10 @@ class MobilePage extends StatelessWidget {
                       keyboardType: TextInputType.phone,
                       onSubmitted: (value) {
                         if (_phoneController.text.length < 8) {
-                          Get.snackbar('Invalid Phone.',
+                          Get.snackbar('Invalid Phone Number.',
                               'Please enter your phone number!');
                         } else {
                           FocusScope.of(context).unfocus();
-                          // Save Phone Number
-                          // OnboardingController().user.phoneNumber =
-                          //     '+216' + value.trim();
-                          // PhoneService().savePhoneNumber('+216' + value.trim());
-                          // OnboardingController()
-                          //     .verifyPhone('+216' + value.trim());
-                          pageController.jumpToPage(4);
                         }
                       },
                       autofocus: true,
@@ -82,17 +78,16 @@ class MobilePage extends StatelessWidget {
                                 'Please enter your phone number!');
                           } else {
                             FocusScope.of(context).unfocus();
-                            // save model
-                            // OnboardingController().user.phoneNumber =
-                            //     '+216' + _phoneController.text.trim();
-                            // save to GetStorage
-                            // PhoneService().savePhoneNumber(
-                            //     '+216' + _phoneController.text.trim());
-                            // Send OTP Code
-                            // await OnboardingController().verifyPhone(
-                            //     '+216' + _phoneController.text.trim());
-
-                            pageController.jumpToPage(4);
+                            onboardingController.userModel.phoneNumber =
+                                '+216' + _phoneController.text.trim();
+                            onboardingController.verifyNumber(
+                                onboardingController.userModel.phoneNumber
+                                    .toString());
+                            Future.delayed(Duration(milliseconds: 300),
+                                () async {
+                              onboardingController.authState.value = 'loading';
+                              pageController.jumpToPage(4);
+                            });
                           }
                         },
                         color: AppColors.darkGrey,

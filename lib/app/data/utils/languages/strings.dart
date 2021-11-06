@@ -23,7 +23,9 @@ class Strings extends Translations {
           'otp_page_question': 'Verification code',
           'otp_page_why': 'Please type the verification code \nsent to ',
           'done_page_button': 'Done',
-          'done_page_text': 'Your account has been verified successfully!'
+          'done_page_text': 'Your account has been verified successfully!',
+          'didnt_rec_msg': 'Didn\'t receive a message? ',
+          'resend_code': 'resend code.',
         },
         'fr_FR': {
           'hello': 'bonjour',
@@ -45,7 +47,9 @@ class Strings extends Translations {
           'otp_page_question': 'Code de vérification',
           'otp_page_why': 'Veuillez saisir le code de vérification \nenvoyé à ',
           'done_page_button': 'Terminé',
-          'done_page_text': 'Votre compte a été vérifié avec succès !'
+          'done_page_text': 'Votre compte a été vérifié avec succès !',
+          'didnt_rec_msg': 'Vous n\'avez pas reçu de message? ',
+          'resend_code': 'renvoyer le code.',
         },
       };
 }

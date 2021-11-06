@@ -9,6 +9,7 @@ class LocalisationPage extends StatelessWidget {
   final PageController pageController;
   LocalisationPage(this.pageController);
   final _addressController = TextEditingController();
+  final OnboardingController onboardingController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -73,9 +74,8 @@ class LocalisationPage extends StatelessWidget {
                                 'Please enter your address!');
                           } else {
                             FocusScope.of(context).unfocus();
-                            // save user address on button click
-                            // OnboardingController().user.address =
-                            //     _addressController.text.trim();
+                            onboardingController.userModel.address =
+                                _addressController.text.trim();
                             pageController.jumpToPage(3);
                           }
                         },

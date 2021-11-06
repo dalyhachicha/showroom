@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:showroom/app/data/theme/color_theme.dart';
 import 'package:showroom/app/data/theme/text_theme.dart';
+import 'package:showroom/app/modules/onboarding/controllers/onboarding_controller.dart';
 import 'package:showroom/app/modules/onboarding/views/widgets/next_button.dart';
 
 class NamePage extends StatelessWidget {
@@ -10,6 +11,8 @@ class NamePage extends StatelessWidget {
   NamePage(this.pageController);
   // Name Text Controller
   final _nameController = TextEditingController();
+  //onBoardingController
+  final OnboardingController onboardingController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +53,7 @@ class NamePage extends StatelessWidget {
                               'Name is empty.', 'Please enter your name!');
                         } else {
                           FocusScope.of(context).unfocus();
-                          // save name on submit
-                          // OnboardingController().user.name = value.trim();
+                          onboardingController.userModel.name = value.trim();
                           pageController.jumpToPage(2);
                         }
                       },
@@ -76,9 +78,8 @@ class NamePage extends StatelessWidget {
                                 'Name is empty.', 'Please enter your name!');
                           } else {
                             FocusScope.of(context).unfocus();
-                            // save name on button click
-                            // OnboardingController().user.name =
-                            //     _nameController.text.trim();
+                            onboardingController.userModel.name =
+                                _nameController.text.trim();
                             pageController.jumpToPage(2);
                           }
                         },

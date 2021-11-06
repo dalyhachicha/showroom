@@ -1,0 +1,25 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'user_model.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
+      name: json['name'] as String?,
+      phoneNumber: json['phoneNumber'] as String?,
+      address: json['address'] as String?,
+      long: json['long'] as String?,
+      alt: json['alt'] as String?,
+      creationDate: json['creationDate'] as String?,
+    );
+
+Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
+      'name': instance.name,
+      'phoneNumber': instance.phoneNumber,
+      'address': instance.address,
+      'long': instance.long,
+      'alt': instance.alt,
+      'creationDate': instance.creationDate,
+    };
