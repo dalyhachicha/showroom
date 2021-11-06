@@ -1,0 +1,29 @@
+name: showroom
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.15.0-116.0.dev <3.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get: 4.3.8
+  flutter: 
+    sdk: flutter
+  google_fonts: ^2.1.0
+  get_storage: ^2.0.3
+  smooth_page_indicator: ^1.0.0+2
+
+dev_dependencies: 
+  flutter_lints: ^1.0.0
+  lints: 1.0.1
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  assets:
+    - assets/
+    - assets/images/
+    - assets/images/flags/
+  uses-material-design: true
+
