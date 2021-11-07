@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:showroom/app/data/theme/color_theme.dart';
 import 'package:showroom/app/data/theme/text_theme.dart';
@@ -113,27 +114,36 @@ class LocalisationPage extends StatelessWidget {
   }
 
   Widget getLocationButton() {
-    return Container(
-        decoration: BoxDecoration(
-          color: AppColors.darkGrey,
-          borderRadius: BorderRadius.circular(40),
-        ),
-        height: 40,
-        width: 240,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Icon(
-              Icons.location_on,
-              color: AppColors.extraLightGrey,
-              size: 30,
-            ),
-            Text(
-              'adr_page_button'.tr,
-              style: AppTextStyle.onBoardingButton,
-            ),
-            SizedBox(width: 8),
-          ],
-        ));
+    return GestureDetector(
+      onTap: () async {
+        Position _position = await onboardingController.determinePosition();
+
+        print(_position);
+        _addressController.text =
+            '${_position.latitude.toString()}, ${_position.longitude.toString()}';
+      },
+      child: Container(
+          decoration: BoxDecoration(
+            color: AppColors.darkGrey,
+            borderRadius: BorderRadius.circular(40),
+          ),
+          height: 40,
+          width: 240,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Icon(
+                Icons.location_on,
+                color: AppColors.extraLightGrey,
+                size: 30,
+              ),
+              Text(
+                'adr_page_button'.tr,
+                style: AppTextStyle.onBoardingButton,
+              ),
+              SizedBox(width: 8),
+            ],
+          )),
+    );
   }
 }

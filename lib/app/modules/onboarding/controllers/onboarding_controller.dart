@@ -1,17 +1,18 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:showroom/app/data/models/user_model.dart';
 import 'package:showroom/app/routes/app_pages.dart';
 
 class OnboardingController extends GetxController {
   UserModel userModel = UserModel();
-  FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-
+  FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   late CollectionReference collectionReference;
+
   String verificationId = '';
   var authState = 'loading'.obs;
 
@@ -23,7 +24,7 @@ class OnboardingController extends GetxController {
       await firebaseAuth.signInWithCredential(credential).then((value) {
         authState.value = 'complete';
       });
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (_) {
       authState.value = 'wrong_code';
     }
   }
@@ -64,6 +65,34 @@ class OnboardingController extends GetxController {
     collectionReference
         .add(userData)
         .whenComplete(() => Get.offAllNamed(Routes.HOME));
+  }
+
+  // GeoLocation Get current location
+  Future<Position> determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Test if location services are enabled.
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      await Geolocator.openLocationSettings();
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+    return await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.best);
   }
 
   @override

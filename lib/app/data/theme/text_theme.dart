@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:showroom/app/data/theme/color_theme.dart';
 
 class AppTextStyle {
+  static TextStyle appBarTitle = GoogleFonts.montserrat(
+      fontSize: 20, fontWeight: FontWeight.w700, fontStyle: FontStyle.italic);
   static TextStyle onBoardingButton = GoogleFonts.roboto(
     fontWeight: FontWeight.w600,
     color: AppColors.extraLightGrey,
