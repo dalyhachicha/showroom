@@ -19,7 +19,8 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   geolocator: ^7.7.1
   http: ^0.13.4
-
+  day_night_switcher: ^0.2.0+1
+  
 dev_dependencies:
   build_runner: ^2.1.4
   flutter_lints: ^1.0.0

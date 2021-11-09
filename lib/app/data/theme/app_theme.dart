@@ -14,7 +14,7 @@ class AppThemes {
     return ThemeData(
       colorScheme: colorScheme,
       appBarTheme: AppBarTheme(
-        color: colorScheme.primary,
+        backgroundColor: colorScheme.primary,
         elevation: 0,
       ),
       iconTheme: IconThemeData(color: colorScheme.onPrimary),
@@ -26,7 +26,7 @@ class AppThemes {
   }
 
   static const ColorScheme lightColorScheme = ColorScheme(
-    primary: AppColors.darkGrey,
+    primary: AppColors.extraLightGrey,
     primaryVariant: AppColors.darkGrey,
     secondary: AppColors.darkGrey,
     secondaryVariant: AppColors.grey,
@@ -36,14 +36,14 @@ class AppThemes {
     // White with 0.05 opacity
     error: Colors.red,
     onError: Colors.white,
-    onPrimary: AppColors.extraLightGrey,
+    onPrimary: AppColors.darkGrey,
     onSecondary: Colors.white,
     onSurface: Colors.black,
     brightness: Brightness.light,
   );
 
   static final ColorScheme darkColorScheme = ColorScheme(
-    primary: AppColors.extraLightGrey,
+    primary: AppColors.darkGrey,
     primaryVariant: AppColors.lightGrey,
     secondary: AppColors.lightGrey,
     secondaryVariant: AppColors.grey,
@@ -53,7 +53,7 @@ class AppThemes {
     // White with 0.05 opacity
     error: Colors.red,
     onError: Colors.white,
-    onPrimary: AppColors.darkGrey,
+    onPrimary: AppColors.extraLightGrey,
     onSecondary: Colors.black,
     onSurface: Colors.white,
     brightness: Brightness.dark,

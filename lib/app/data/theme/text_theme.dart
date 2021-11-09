@@ -2,10 +2,30 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:showroom/app/data/theme/color_theme.dart';
 
 class AppTextStyle {
+  static TextStyle productCardPrice = GoogleFonts.poppins(
+    fontSize: 18,
+    fontWeight: FontWeight.w700,
+    color: AppColors.extraLightGrey,
+  );
+  static TextStyle productCardTitle = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.extraLightGrey,
+  );
+  static TextStyle drawerItemText = GoogleFonts.poppins(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+  );
+  static TextStyle drawerTitle = GoogleFonts.montserrat(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+    fontStyle: FontStyle.italic,
+  );
   static TextStyle appBarTitle = GoogleFonts.montserrat(
       fontSize: 20, fontWeight: FontWeight.w700, fontStyle: FontStyle.italic);
   static TextStyle onBoardingButton = GoogleFonts.roboto(

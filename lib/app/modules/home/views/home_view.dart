@@ -1,56 +1,46 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:showroom/app/data/models/user_model.dart';
-import 'package:showroom/app/data/theme/color_theme.dart';
-import 'package:showroom/app/data/theme/text_theme.dart';
-import 'package:showroom/app/routes/app_pages.dart';
+import 'package:showroom/app/data/models/product_model.dart';
+import 'package:showroom/app/modules/home/views/widgets/single_product_widget.dart';
 
 import '../controllers/home_controller.dart';
+import 'widgets/app_bar_widget.dart';
+import 'widgets/custom_drawer.dart';
+import 'widgets/home_top_section_widget.dart';
 
-class HomeView extends GetView<HomeController> {
+class HomeView extends StatelessWidget {
+  HomeController homeController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        backgroundColor: AppColors.darkGrey,
-        child: DrawerHeader(child: Text('ghh')),
-      ),
-      backgroundColor: AppColors.darkGrey,
+      drawer: CustomDrawer(),
       appBar: appBar(),
-      body: Center(
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ElevatedButton(
-                onPressed: () {
-                  UserModel().logout();
-                  Get.offAllNamed(Routes.SPLASH);
-                },
-                child: Text('Logout')),
-            Text(
-              'HomeView is working',
-              style: TextStyle(fontSize: 20),
-            ),
+            HomeTopSection(),
+            Expanded(
+              child: Obx(
+                () => GridView.count(
+                  crossAxisCount: 2,
+                  childAspectRatio: .75,
+                  padding: const EdgeInsets.symmetric(vertical: 24),
+                  mainAxisSpacing: 12,
+                  crossAxisSpacing: 12,
+                  children: homeController.products.map((ProductModel product) {
+                    return SingleProductWidget(
+                      product: product,
+                    );
+                  }).toList(),
+                ),
+              ),
+            )
           ],
         ),
       ),
-    );
-  }
-
-  appBar() {
-    return AppBar(
-      // leading: Icon(Icons.menu),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.shopping_bag),
-        ),
-      ],
-      title: Text(
-        'Showroom',
-        style: AppTextStyle.appBarTitle,
-      ),
-      centerTitle: true,
     );
   }
 }
