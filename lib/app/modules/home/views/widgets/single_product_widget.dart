@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:showroom/app/data/models/product_model.dart';
-import 'package:showroom/app/data/services/theme_service.dart';
-import 'package:showroom/app/data/theme/app_theme.dart';
-import 'package:showroom/app/data/theme/color_theme.dart';
 import 'package:showroom/app/data/theme/text_theme.dart';
 import 'package:showroom/app/routes/app_pages.dart';
 
@@ -15,19 +12,12 @@ class SingleProductWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.PRODUCT);
+        Get.toNamed(Routes.PRODUCT, arguments: [product]);
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.black45,
+          color: Theme.of(context).colorScheme.onBackground, //Colors.black45
           borderRadius: BorderRadius.circular(12),
-          // boxShadow: [
-          //   BoxShadow(
-          //     color: AppColors.grey,
-          //     offset: Offset(0, 2),
-          //     blurRadius: 2,
-          //   ),
-          // ],
         ),
         child: Column(
           children: [
@@ -51,11 +41,13 @@ class SingleProductWidget extends StatelessWidget {
                 children: [
                   Text(
                     product.name,
-                    style: AppTextStyle.productCardTitle,
+                    style: AppTextStyle.productCardTitle.copyWith(
+                        color: Theme.of(context).colorScheme.background),
                   ),
                   Text(
                     '${product.price} DT',
-                    style: AppTextStyle.productCardPrice,
+                    style: AppTextStyle.productCardPrice.copyWith(
+                        color: Theme.of(context).colorScheme.background),
                   ),
                 ],
               ),
