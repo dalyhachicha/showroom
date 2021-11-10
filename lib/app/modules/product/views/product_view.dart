@@ -16,95 +16,105 @@ class ProductView extends GetView<ProductController> {
   @override
   Widget build(BuildContext context) {
     final List<String> imgUrls = product.imgUrls;
-    return Scaffold(
-      body: Stack(
-        children: [
-          //Carousel
-          Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            child: CarouselSlider.builder(
-              itemCount: imgUrls.length,
-              options: CarouselOptions(
-                onPageChanged: (index, reason) {
-                  productController.activeIndex.value = index;
+    return SafeArea(
+      child: Scaffold(
+        body: Stack(
+          children: [
+            //Carousel
+            Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: CarouselSlider.builder(
+                itemCount: imgUrls.length,
+                options: CarouselOptions(
+                  onPageChanged: (index, reason) {
+                    productController.activeIndex.value = index;
+                  },
+                  height: MediaQuery.of(context).size.height,
+                  viewportFraction: 1,
+                ),
+                itemBuilder: (context, index, realIndex) {
+                  final imgUrl = imgUrls[index];
+                  return buildImage(imgUrl, index);
                 },
-                height: MediaQuery.of(context).size.height,
-                viewportFraction: 1,
-              ),
-              itemBuilder: (context, index, realIndex) {
-                final imgUrl = imgUrls[index];
-                return buildImage(imgUrl, index);
-              },
-            ),
-          ),
-          // TOP SECTION
-          Positioned(
-            top: 30,
-            right: 20,
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.favorite,
-                size: 30,
               ),
             ),
-          ),
-          Positioned(
-            top: 30,
-            left: 20,
-            child: IconButton(
-              onPressed: () {
-                Get.back();
-              },
-              icon: Icon(
-                Icons.arrow_back,
-                size: 30,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 50),
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: Obx(
-                () => buildIndicator(),
-              ),
-            ),
-          ),
-          Positioned(
-            right: 0,
-            bottom: 80,
-            child: Obx(
-              () => AnimatedContainer(
+            // TOP SECTION
+            Positioned(
+              child: Container(
+                height: 56,
                 decoration: BoxDecoration(
-                    color: Get.theme.scaffoldBackgroundColor,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(12),
-                      bottomLeft: Radius.circular(12),
-                    )),
-                alignment: Alignment.centerRight,
-                duration: Duration(milliseconds: 500),
-                height: 205,
-                width: productController.containerWidth.value,
-                child: productController.isVisible.value
-                    ? buildContainerContent()
-                    : Align(
-                        alignment: Alignment.centerLeft,
-                        child: IconButton(
-                          onPressed: () {
-                            toggleContainer();
-                          },
-                          icon: Icon(
-                            Icons.arrow_back_ios,
-                            color: AppColors.grey,
-                          ),
+                  color: Get.theme.colorScheme.background.withOpacity(0.3),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Get.back();
+                      },
+                      icon: Icon(
+                        Icons.arrow_back,
+                        size: 30,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 25),
+                      child: Align(
+                        alignment: Alignment.topCenter,
+                        child: Obx(
+                          () => buildIndicator(),
                         ),
                       ),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.favorite,
+                        size: 30,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+
+            Positioned(
+              right: 0,
+              bottom: 80,
+              child: Obx(
+                () => AnimatedContainer(
+                  decoration: BoxDecoration(
+                      color: Get.theme.scaffoldBackgroundColor,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(12),
+                        bottomLeft: Radius.circular(12),
+                      )),
+                  alignment: Alignment.centerRight,
+                  duration: Duration(milliseconds: 500),
+                  height: 205,
+                  width: productController.containerWidth.value,
+                  child: productController.isVisible.value
+                      ? buildContainerContent()
+                      : Align(
+                          alignment: Alignment.centerLeft,
+                          child: IconButton(
+                            onPressed: () {
+                              toggleContainer();
+                            },
+                            icon: Icon(
+                              Icons.arrow_back_ios,
+                              color: AppColors.grey,
+                            ),
+                          ),
+                        ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -249,7 +259,7 @@ class ProductView extends GetView<ProductController> {
         effect: ExpandingDotsEffect(
           dotWidth: 14,
           dotHeight: 14,
-          dotColor: AppColors.lightGrey,
+          dotColor: AppColors.extraLightGrey,
           activeDotColor: AppColors.darkGrey,
         ),
         activeIndex: productController.activeIndex.value,

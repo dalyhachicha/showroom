@@ -5,7 +5,6 @@ import 'package:showroom/app/data/models/product_model.dart';
 class HomeController extends GetxController {
   RxList<ProductModel> products = RxList<ProductModel>([]);
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-  var text = "qq".obs;
 
   @override
   void onInit() {

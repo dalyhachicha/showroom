@@ -23,20 +23,29 @@ class HomeView extends StatelessWidget {
           children: [
             HomeTopSection(),
             Expanded(
-              child: Obx(
-                () => GridView.count(
-                  crossAxisCount: 2,
-                  childAspectRatio: .75,
-                  padding: const EdgeInsets.symmetric(vertical: 24),
-                  mainAxisSpacing: 12,
-                  crossAxisSpacing: 12,
-                  children: homeController.products.map((ProductModel product) {
-                    return SingleProductWidget(
-                      product: product,
-                    );
-                  }).toList(),
-                ),
-              ),
+              child: Obx(() {
+                if (homeController.products.isEmpty) {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      color: Get.theme.colorScheme.onBackground,
+                    ),
+                  );
+                } else {
+                  return GridView.count(
+                    crossAxisCount: 2,
+                    childAspectRatio: .75,
+                    padding: const EdgeInsets.symmetric(vertical: 24),
+                    mainAxisSpacing: 12,
+                    crossAxisSpacing: 12,
+                    children:
+                        homeController.products.map((ProductModel product) {
+                      return SingleProductWidget(
+                        product: product,
+                      );
+                    }).toList(),
+                  );
+                }
+              }),
             )
           ],
         ),

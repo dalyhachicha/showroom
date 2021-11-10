@@ -65,7 +65,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-auth'
     // Eecaptcha for phone verification
-    implementation "androidx.browser:browser:1.4.0"
+    implementation "androidx.browser:browser:1.3.0"
     // SafetyNet for phone verification
 
 

@@ -125,11 +125,10 @@ class LocalisationPage extends StatelessWidget {
   Widget getLocationButton() {
     return GestureDetector(
       onTap: () async {
-        Position _position = await onboardingController.determinePosition();
-
-        print(_position);
-        _addressController.text =
-            '${_position.latitude.toString()}, ${_position.longitude.toString()}';
+        await onboardingController.determinePosition().then((value) {
+          _addressController.text =
+              '${value.latitude.toString()}, ${value.longitude.toString()}';
+        });
       },
       child: Container(
           decoration: BoxDecoration(
