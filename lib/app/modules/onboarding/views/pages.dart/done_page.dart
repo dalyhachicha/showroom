@@ -17,6 +17,7 @@ class DonePage extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.darkGrey,
       appBar: AppBar(
+        backgroundColor: AppColors.darkGrey,
         elevation: 0,
       ),
       body: Stack(

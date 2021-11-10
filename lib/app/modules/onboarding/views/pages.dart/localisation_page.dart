@@ -20,6 +20,7 @@ class LocalisationPage extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.darkGrey,
       appBar: AppBar(
+        backgroundColor: AppColors.darkGrey,
         centerTitle: true,
         elevation: 0,
       ),
@@ -49,12 +50,14 @@ class LocalisationPage extends StatelessWidget {
                     getLocationButton(),
                     SizedBox(height: 24),
                     TextField(
+                      cursorColor: AppColors.darkGrey,
                       keyboardType: TextInputType.streetAddress,
                       controller: _addressController,
                       onSubmitted: (value) {
                         FocusScope.of(context).unfocus();
                       },
                       decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(),
                         border: OutlineInputBorder(),
                         helperStyle: TextStyle(color: AppColors.darkGrey),
                         helperText: 'adr_page_helper'.tr,
@@ -63,7 +66,10 @@ class LocalisationPage extends StatelessWidget {
                           onPressed: () {
                             _addressController.clear();
                           },
-                          icon: Icon(Icons.clear),
+                          icon: Icon(
+                            Icons.clear,
+                            color: AppColors.grey,
+                          ),
                         ),
                       ),
                     ),
@@ -71,8 +77,11 @@ class LocalisationPage extends StatelessWidget {
                     NextButton(
                         onTap: () {
                           if (_addressController.text.isEmpty) {
-                            Get.snackbar('Address is empty.',
-                                'Please enter your address!');
+                            Get.snackbar(
+                              'Address is empty.',
+                              'Please enter your address!',
+                              colorText: AppColors.lightGrey,
+                            );
                           } else {
                             FocusScope.of(context).unfocus();
                             onboardingController.userModel.address =

@@ -1,10 +1,9 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:showroom/app/data/models/user_model.dart';
+import 'package:showroom/app/data/theme/color_theme.dart';
 import 'package:showroom/app/routes/app_pages.dart';
 
 class OnboardingController extends GetxController {
@@ -37,20 +36,32 @@ class OnboardingController extends GetxController {
       verificationCompleted: (PhoneAuthCredential credential) async {
         authState.value = 'complete';
         // sometimes automatically verify current phone is the phone number
-        await firebaseAuth.signInWithCredential(credential).then((value) =>
-            Get.snackbar('Verification Compelete',
-                'Your phone has been successfully verified.'));
+        await firebaseAuth
+            .signInWithCredential(credential)
+            .then((value) => Get.snackbar(
+                  'Verification Compelete',
+                  'Your phone has been successfully verified.',
+                  colorText: AppColors.lightGrey,
+                ));
 
         // if i do this data will not be good and saved in firebase must go to last page
         //.then((value) => Get.offAllNamed(Routes.HOME));
       },
       verificationFailed: (FirebaseAuthException exception) {
-        Get.snackbar('Invalid Phone Number', 'Please enter your phone number');
+        Get.snackbar(
+          'Invalid Phone Number',
+          'Please enter your phone number',
+          colorText: AppColors.lightGrey,
+        );
         authState.value = 'failed';
       },
       codeSent: (String vId, int? resendToken) {
         verificationId = vId;
-        Get.snackbar('Code Sent', 'Code sent to $phoneNumber');
+        Get.snackbar(
+          'Code Sent',
+          'Code sent to $phoneNumber',
+          colorText: AppColors.lightGrey,
+        );
         authState.value = 'sent';
       },
       codeAutoRetrievalTimeout: (String verificationId) {

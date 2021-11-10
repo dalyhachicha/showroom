@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:showroom/app/data/services/theme_service.dart';
 import 'package:showroom/app/data/utils/get_storage_keys.dart';
 
 part 'user_model.g.dart';
@@ -28,6 +29,8 @@ class UserModel {
 
   logout() {
     final _getStorage = GetStorage();
+    if (ThemeService().isDarkMode()) ThemeService().changeThemeMode();
+    _getStorage.remove(GetStorageKey.IS_DARK_MODE);
     _getStorage.remove(GetStorageKey.IS_LOGGED_IN);
     _getStorage.remove(GetStorageKey.PHONE_NUMBER);
   }

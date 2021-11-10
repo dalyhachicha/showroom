@@ -22,6 +22,7 @@ class NamePage extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.darkGrey,
       appBar: AppBar(
+        backgroundColor: AppColors.darkGrey,
         elevation: 0,
       ),
       body: Stack(
@@ -46,11 +47,15 @@ class NamePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     TextField(
+                      cursorColor: AppColors.darkGrey,
                       keyboardType: TextInputType.name,
                       onSubmitted: (value) {
                         if (_nameController.text.isEmpty) {
                           Get.snackbar(
-                              'Name is empty.', 'Please enter your name!');
+                            'Name is empty.',
+                            'Please enter your name!',
+                            colorText: AppColors.lightGrey,
+                          );
                         } else {
                           FocusScope.of(context).unfocus();
                           onboardingController.userModel.name = value.trim();
@@ -60,13 +65,17 @@ class NamePage extends StatelessWidget {
                       autofocus: true,
                       controller: _nameController,
                       decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(),
                         border: OutlineInputBorder(),
                         hintText: 'name_page_hintText'.tr,
                         suffixIcon: IconButton(
                           onPressed: () {
                             _nameController.clear();
                           },
-                          icon: Icon(Icons.clear),
+                          icon: Icon(
+                            Icons.clear,
+                            color: AppColors.grey,
+                          ),
                         ),
                       ),
                     ),
@@ -75,7 +84,10 @@ class NamePage extends StatelessWidget {
                         onTap: () {
                           if (_nameController.text.isEmpty) {
                             Get.snackbar(
-                                'Name is empty.', 'Please enter your name!');
+                              'Name is empty.',
+                              'Please enter your name!',
+                              colorText: AppColors.lightGrey,
+                            );
                           } else {
                             FocusScope.of(context).unfocus();
                             onboardingController.userModel.name =

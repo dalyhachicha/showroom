@@ -21,6 +21,7 @@ class MobilePage extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.darkGrey,
       appBar: AppBar(
+        backgroundColor: AppColors.darkGrey,
         elevation: 0,
       ),
       body: Stack(
@@ -45,12 +46,16 @@ class MobilePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     TextField(
+                      cursorColor: AppColors.darkGrey,
                       maxLength: 8,
                       keyboardType: TextInputType.phone,
                       onSubmitted: (value) {
                         if (_phoneController.text.length < 8) {
-                          Get.snackbar('Invalid Phone Number.',
-                              'Please enter your phone number!');
+                          Get.snackbar(
+                            'Invalid Phone Number.',
+                            'Please enter your phone number!',
+                            colorText: AppColors.lightGrey,
+                          );
                         } else {
                           FocusScope.of(context).unfocus();
                         }
@@ -58,6 +63,7 @@ class MobilePage extends StatelessWidget {
                       autofocus: true,
                       controller: _phoneController,
                       decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(),
                         prefixText: '+216',
                         prefixStyle: TextStyle(fontSize: 16),
                         border: OutlineInputBorder(),
@@ -66,7 +72,10 @@ class MobilePage extends StatelessWidget {
                           onPressed: () {
                             _phoneController.clear();
                           },
-                          icon: Icon(Icons.clear),
+                          icon: Icon(
+                            Icons.clear,
+                            color: AppColors.grey,
+                          ),
                         ),
                       ),
                     ),
@@ -74,8 +83,11 @@ class MobilePage extends StatelessWidget {
                     NextButton(
                         onTap: () async {
                           if (_phoneController.text.length < 8) {
-                            Get.snackbar('Invalid Phone.',
-                                'Please enter your phone number!');
+                            Get.snackbar(
+                              'Invalid Phone.',
+                              'Please enter your phone number!',
+                              colorText: AppColors.lightGrey,
+                            );
                           } else {
                             FocusScope.of(context).unfocus();
                             onboardingController.userModel.phoneNumber =

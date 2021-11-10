@@ -22,6 +22,7 @@ class OtpPage extends StatelessWidget {
           resizeToAvoidBottomInset: false,
           backgroundColor: AppColors.darkGrey,
           appBar: AppBar(
+            backgroundColor: AppColors.darkGrey,
             elevation: 0,
           ),
           body: Stack(
@@ -52,29 +53,37 @@ class OtpPage extends StatelessWidget {
                                 Get.snackbar(
                                   'Check your phone number',
                                   'Please re-enter your phone number.',
+                                  colorText: AppColors.lightGrey,
                                 );
                                 pageController.jumpToPage(3);
                               });
                             },
-                            child: Row(
+                            child: Column(
                               children: [
-                                Text('didnt_rec_msg'.tr),
+                                Text(
+                                  'didnt_rec_msg'.tr,
+                                  style: TextStyle(color: AppColors.darkGrey),
+                                ),
                                 Text(
                                   'resend_code'.tr,
                                   style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                  ),
+                                      decoration: TextDecoration.underline,
+                                      color: AppColors.darkGrey),
                                 ),
                               ],
                             )),
                         SizedBox(height: 8),
                         TextField(
+                          cursorColor: AppColors.darkGrey,
                           maxLength: 6,
                           keyboardType: TextInputType.phone,
                           onSubmitted: (value) async {
                             if (_otpController.text.length < 6) {
                               Get.snackbar(
-                                  'Invalid OTP', 'OTP length must be > 6');
+                                'Invalid OTP',
+                                'OTP length must be > 6',
+                                colorText: AppColors.lightGrey,
+                              );
                             } else {
                               FocusScope.of(context).unfocus();
                               if (onBoardingController.authState.value ==
@@ -89,6 +98,7 @@ class OtpPage extends StatelessWidget {
                           autofocus: true,
                           controller: _otpController,
                           decoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(),
                             prefixStyle: TextStyle(fontSize: 16),
                             border: OutlineInputBorder(),
                             hintText: 'OTP code',
@@ -96,7 +106,10 @@ class OtpPage extends StatelessWidget {
                               onPressed: () {
                                 _otpController.clear();
                               },
-                              icon: Icon(Icons.clear),
+                              icon: Icon(
+                                Icons.clear,
+                                color: AppColors.grey,
+                              ),
                             ),
                           ),
                         ),
@@ -105,7 +118,10 @@ class OtpPage extends StatelessWidget {
                             onTap: () {
                               if (_otpController.text.length < 6) {
                                 Get.snackbar(
-                                    'Invalid OTP', 'OTP length must be > 6');
+                                  'Invalid OTP',
+                                  'OTP length must be > 6',
+                                  colorText: AppColors.lightGrey,
+                                );
                               } else {
                                 FocusScope.of(context).unfocus();
                                 if (onBoardingController.authState.value ==
@@ -163,6 +179,7 @@ class OtpPage extends StatelessWidget {
           Get.snackbar(
             'Wrong code',
             'Wrong verification code!',
+            colorText: AppColors.lightGrey,
           );
           pageController.jumpToPage(3);
         });
@@ -171,6 +188,7 @@ class OtpPage extends StatelessWidget {
           Get.snackbar(
             'Code Timeout',
             'Timed out waiting for code!\nplease try later.',
+            colorText: AppColors.lightGrey,
           );
           pageController.jumpToPage(3);
         });
@@ -184,6 +202,7 @@ class OtpPage extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.darkGrey,
       appBar: AppBar(
+        backgroundColor: AppColors.darkGrey,
         elevation: 0,
       ),
       body: Center(
