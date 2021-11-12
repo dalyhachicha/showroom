@@ -4,6 +4,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:showroom/app/data/models/user_model.dart';
 import 'package:showroom/app/data/theme/color_theme.dart';
+import 'package:showroom/app/modules/widgets/custom_snackbar.dart';
 import 'package:showroom/app/routes/app_pages.dart';
 
 class OnboardingController extends GetxController {
@@ -48,20 +49,21 @@ class OnboardingController extends GetxController {
         //.then((value) => Get.offAllNamed(Routes.HOME));
       },
       verificationFailed: (FirebaseAuthException exception) {
-        Get.snackbar(
-          'Invalid Phone Number',
-          'Please enter your phone number',
-          colorText: AppColors.lightGrey,
+        customSnackbar(
+          title: 'Invalid Phone Number',
+          message: 'Please enter your phone number',
+          position: SnackPosition.TOP,
         );
         authState.value = 'failed';
       },
       codeSent: (String vId, int? resendToken) {
         verificationId = vId;
-        Get.snackbar(
-          'Code Sent',
-          'Code sent to $phoneNumber',
-          colorText: AppColors.lightGrey,
+        customSnackbar(
+          title: 'Code Sent',
+          message: 'Code sent to $phoneNumber',
+          position: SnackPosition.TOP,
         );
+
         authState.value = 'sent';
       },
       codeAutoRetrievalTimeout: (String verificationId) {

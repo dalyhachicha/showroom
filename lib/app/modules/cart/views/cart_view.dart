@@ -4,9 +4,8 @@ import 'package:get/get.dart';
 import 'package:showroom/app/data/theme/color_theme.dart';
 import 'package:showroom/app/data/theme/text_theme.dart';
 import 'package:showroom/app/modules/cart/views/widgets/cart_product_card.dart';
-import 'package:showroom/app/modules/home/views/widgets/app_bar_widget.dart';
-
 import '../controllers/cart_controller.dart';
+import '../views/widgets/appbar_counter_widget.dart';
 
 class CartView extends GetView<CartController> {
   final CartController cartController = Get.find();
@@ -25,7 +24,7 @@ class CartView extends GetView<CartController> {
         centerTitle: true,
         actions: [
           Obx(
-            () => _cartCounter(cartController.products.length),
+            () => AppBarCounterWidget(count: cartController.products.length),
           ),
         ],
       ),
@@ -159,27 +158,4 @@ class CartView extends GetView<CartController> {
       ),
     );
   }
-
-  Widget _cartCounter(int count) => GestureDetector(
-        onTap: () {},
-        child: Container(
-          margin: EdgeInsets.all(12),
-          height: 30,
-          width: 30,
-          decoration: BoxDecoration(
-            color: Get.theme.colorScheme.onBackground,
-            borderRadius: BorderRadius.circular(4),
-          ),
-          child: Center(
-            child: Text(
-              count.toString(),
-              style: TextStyle(
-                color: Get.theme.colorScheme.background,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-          ),
-        ),
-      );
 }

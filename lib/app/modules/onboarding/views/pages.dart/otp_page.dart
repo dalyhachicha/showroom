@@ -5,6 +5,7 @@ import 'package:showroom/app/data/theme/color_theme.dart';
 import 'package:showroom/app/data/theme/text_theme.dart';
 import 'package:showroom/app/modules/onboarding/controllers/onboarding_controller.dart';
 import 'package:showroom/app/modules/onboarding/views/widgets/next_button.dart';
+import 'package:showroom/app/modules/widgets/custom_snackbar.dart';
 
 class OtpPage extends StatelessWidget {
   final PageController pageController;
@@ -50,10 +51,10 @@ class OtpPage extends StatelessWidget {
                             onPressed: () {
                               Future.delayed(Duration(milliseconds: 300),
                                   () async {
-                                Get.snackbar(
-                                  'Check your phone number',
-                                  'Please re-enter your phone number.',
-                                  colorText: AppColors.lightGrey,
+                                customSnackbar(
+                                  title: 'Wrong phone number?',
+                                  message: 'Please re-enter your phone number.',
+                                  position: SnackPosition.TOP,
                                 );
                                 pageController.jumpToPage(3);
                               });
@@ -79,10 +80,10 @@ class OtpPage extends StatelessWidget {
                           keyboardType: TextInputType.phone,
                           onSubmitted: (value) async {
                             if (_otpController.text.length < 6) {
-                              Get.snackbar(
-                                'Invalid OTP',
-                                'OTP length must be > 6',
-                                colorText: AppColors.lightGrey,
+                              customSnackbar(
+                                title: 'Invalid OTP Code',
+                                message: 'OTP is a 6 number code.',
+                                position: SnackPosition.TOP,
                               );
                             } else {
                               FocusScope.of(context).unfocus();
@@ -117,10 +118,10 @@ class OtpPage extends StatelessWidget {
                         NextButton(
                             onTap: () {
                               if (_otpController.text.length < 6) {
-                                Get.snackbar(
-                                  'Invalid OTP',
-                                  'OTP length must be > 6',
-                                  colorText: AppColors.lightGrey,
+                                customSnackbar(
+                                  title: 'Invalid OTP Code',
+                                  message: 'OTP is a 6 number code.',
+                                  position: SnackPosition.TOP,
                                 );
                               } else {
                                 FocusScope.of(context).unfocus();
@@ -176,19 +177,19 @@ class OtpPage extends StatelessWidget {
         return _failedScreen();
       } else if (onBoardingController.authState.value == 'wrong_code') {
         Future.delayed(Duration(milliseconds: 300), () async {
-          Get.snackbar(
-            'Wrong code',
-            'Wrong verification code!',
-            colorText: AppColors.lightGrey,
+          customSnackbar(
+            title: 'Invalid Code',
+            message: 'Invalid verification code.',
+            position: SnackPosition.TOP,
           );
           pageController.jumpToPage(3);
         });
       } else if (onBoardingController.authState.value == 'timeout') {
         Future.delayed(Duration(milliseconds: 300), () async {
-          Get.snackbar(
-            'Code Timeout',
-            'Timed out waiting for code!\nplease try later.',
-            colorText: AppColors.lightGrey,
+          customSnackbar(
+            title: 'Timeout',
+            message: 'Timed out waiting for code\nplease try later.',
+            position: SnackPosition.TOP,
           );
           pageController.jumpToPage(3);
         });

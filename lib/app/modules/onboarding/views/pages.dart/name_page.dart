@@ -5,6 +5,7 @@ import 'package:showroom/app/data/theme/color_theme.dart';
 import 'package:showroom/app/data/theme/text_theme.dart';
 import 'package:showroom/app/modules/onboarding/controllers/onboarding_controller.dart';
 import 'package:showroom/app/modules/onboarding/views/widgets/next_button.dart';
+import 'package:showroom/app/modules/widgets/custom_snackbar.dart';
 
 class NamePage extends StatelessWidget {
   final PageController pageController;
@@ -51,10 +52,10 @@ class NamePage extends StatelessWidget {
                       keyboardType: TextInputType.name,
                       onSubmitted: (value) {
                         if (_nameController.text.isEmpty) {
-                          Get.snackbar(
-                            'Name is empty.',
-                            'Please enter your name!',
-                            colorText: AppColors.lightGrey,
+                          customSnackbar(
+                            title: 'Name is empty',
+                            message: 'Please enter your name',
+                            position: SnackPosition.TOP,
                           );
                         } else {
                           FocusScope.of(context).unfocus();
@@ -83,10 +84,10 @@ class NamePage extends StatelessWidget {
                     NextButton(
                         onTap: () {
                           if (_nameController.text.isEmpty) {
-                            Get.snackbar(
-                              'Name is empty.',
-                              'Please enter your name!',
-                              colorText: AppColors.lightGrey,
+                            customSnackbar(
+                              title: 'Name is Empty',
+                              message: 'Please enter your name.',
+                              position: SnackPosition.TOP,
                             );
                           } else {
                             FocusScope.of(context).unfocus();

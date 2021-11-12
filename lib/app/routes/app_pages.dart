@@ -10,8 +10,6 @@ import 'package:showroom/app/modules/product/bindings/product_binding.dart';
 import 'package:showroom/app/modules/product/views/product_view.dart';
 import 'package:showroom/app/modules/splash/bindings/splash_binding.dart';
 import 'package:showroom/app/modules/splash/views/splash_view.dart';
-import 'package:showroom/app/modules/wishlist/bindings/wishlist_binding.dart';
-import 'package:showroom/app/modules/wishlist/views/wishlist_view.dart';
 
 part 'app_routes.dart';
 
@@ -45,11 +43,6 @@ class AppPages {
       name: _Paths.CART,
       page: () => CartView(),
       binding: CartBinding(),
-    ),
-    GetPage(
-      name: _Paths.WISHLIST,
-      page: () => WishlistView(),
-      binding: WishlistBinding(),
     ),
   ];
 }

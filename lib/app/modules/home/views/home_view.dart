@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:showroom/app/data/models/product_model.dart';
+import 'package:showroom/app/modules/cart/controllers/cart_controller.dart';
 import 'package:showroom/app/modules/home/views/widgets/single_product_widget.dart';
 
 import '../controllers/home_controller.dart';
@@ -11,6 +12,7 @@ import 'widgets/home_top_section_widget.dart';
 
 class HomeView extends StatelessWidget {
   final HomeController homeController = Get.find();
+  final CartController cartController = Get.find();
 
   @override
   Widget build(BuildContext context) {

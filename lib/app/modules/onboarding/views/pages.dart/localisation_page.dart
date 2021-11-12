@@ -5,6 +5,7 @@ import 'package:showroom/app/data/theme/color_theme.dart';
 import 'package:showroom/app/data/theme/text_theme.dart';
 import 'package:showroom/app/modules/onboarding/controllers/onboarding_controller.dart';
 import 'package:showroom/app/modules/onboarding/views/widgets/next_button.dart';
+import 'package:showroom/app/modules/widgets/custom_snackbar.dart';
 
 class LocalisationPage extends StatelessWidget {
   final PageController pageController;
@@ -77,10 +78,10 @@ class LocalisationPage extends StatelessWidget {
                     NextButton(
                         onTap: () {
                           if (_addressController.text.isEmpty) {
-                            Get.snackbar(
-                              'Address is empty.',
-                              'Please enter your address!',
-                              colorText: AppColors.lightGrey,
+                            customSnackbar(
+                              title: 'Address is empty.',
+                              message: 'Please enter your address!',
+                              position: SnackPosition.TOP,
                             );
                           } else {
                             FocusScope.of(context).unfocus();

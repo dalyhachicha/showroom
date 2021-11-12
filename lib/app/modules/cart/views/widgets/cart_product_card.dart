@@ -73,7 +73,9 @@ class CartProductCard extends StatelessWidget {
                 onPressed: () {
                   controller.removeProduct(product);
                 },
-                icon: Icon(Icons.remove_circle_outline),
+                icon: qte > 1
+                    ? Icon(Icons.remove_circle_outline)
+                    : Icon(Icons.delete_forever),
               ),
             ],
           ),

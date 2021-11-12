@@ -5,6 +5,7 @@ import 'package:showroom/app/data/theme/color_theme.dart';
 import 'package:showroom/app/data/theme/text_theme.dart';
 import 'package:showroom/app/modules/onboarding/controllers/onboarding_controller.dart';
 import 'package:showroom/app/modules/onboarding/views/widgets/next_button.dart';
+import 'package:showroom/app/modules/widgets/custom_snackbar.dart';
 
 class MobilePage extends StatelessWidget {
   final PageController pageController;
@@ -51,10 +52,10 @@ class MobilePage extends StatelessWidget {
                       keyboardType: TextInputType.phone,
                       onSubmitted: (value) {
                         if (_phoneController.text.length < 8) {
-                          Get.snackbar(
-                            'Invalid Phone Number.',
-                            'Please enter your phone number!',
-                            colorText: AppColors.lightGrey,
+                          customSnackbar(
+                            title: 'Invalid Phone Number.',
+                            message: 'Please enter your phone number',
+                            position: SnackPosition.TOP,
                           );
                         } else {
                           FocusScope.of(context).unfocus();
@@ -83,10 +84,10 @@ class MobilePage extends StatelessWidget {
                     NextButton(
                         onTap: () async {
                           if (_phoneController.text.length < 8) {
-                            Get.snackbar(
-                              'Invalid Phone.',
-                              'Please enter your phone number!',
-                              colorText: AppColors.lightGrey,
+                            customSnackbar(
+                              title: 'Invalid Phone Number',
+                              message: 'Please enter your phone number',
+                              position: SnackPosition.TOP,
                             );
                           } else {
                             FocusScope.of(context).unfocus();

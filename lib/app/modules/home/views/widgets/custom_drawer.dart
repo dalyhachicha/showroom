@@ -34,11 +34,6 @@ class CustomDrawer extends StatelessWidget {
               onTap: () => selectedItem(1),
             ),
             buildDrawerItem(
-              text: 'Wishlist',
-              icon: Icons.favorite,
-              onTap: () => selectedItem(2),
-            ),
-            buildDrawerItem(
               text: 'History',
               icon: Icons.history,
               onTap: () => selectedItem(3),
@@ -83,12 +78,17 @@ class CustomDrawer extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 12),
       child: TextField(
+        cursorColor: Get.theme.colorScheme.onBackground,
         keyboardType: TextInputType.text,
         textInputAction: TextInputAction.search,
         onSubmitted: (value) {},
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.search),
+          focusedBorder: OutlineInputBorder(),
           border: OutlineInputBorder(),
+          prefixIcon: Icon(
+            Icons.search,
+            color: AppColors.grey,
+          ),
           hintText: 'Search'.tr,
         ),
       ),
@@ -130,10 +130,9 @@ class CustomDrawer extends StatelessWidget {
         Get.toNamed(Routes.HOME);
         break;
       case 1:
-        // CART
+        Get.toNamed(Routes.CART);
         break;
       case 2:
-        // WISHLIST
         break;
       case 3:
         // HISTORY

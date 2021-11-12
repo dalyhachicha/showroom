@@ -48,7 +48,7 @@ class ProductView extends GetView<ProductController> {
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     IconButton(
@@ -61,19 +61,14 @@ class ProductView extends GetView<ProductController> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 25),
+                      padding: EdgeInsets.only(
+                          top: 25,
+                          left: MediaQuery.of(context).size.width * 0.3),
                       child: Align(
                         alignment: Alignment.topCenter,
                         child: Obx(
                           () => buildIndicator(),
                         ),
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.favorite,
-                        size: 30,
                       ),
                     ),
                   ],
