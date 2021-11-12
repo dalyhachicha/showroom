@@ -10,7 +10,7 @@ import 'widgets/custom_drawer.dart';
 import 'widgets/home_top_section_widget.dart';
 
 class HomeView extends StatelessWidget {
-  HomeController homeController = Get.find();
+  final HomeController homeController = Get.find();
 
   @override
   Widget build(BuildContext context) {
