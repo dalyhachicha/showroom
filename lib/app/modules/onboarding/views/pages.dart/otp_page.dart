@@ -227,19 +227,16 @@ class OtpPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'Wrong OTP code!',
-              style:
-                  AppTextStyle.onboardingHead.copyWith(color: Colors.red[700]),
+              'Something went wrong!',
+              style: AppTextStyle.onboardingHead
+                  .copyWith(color: AppColors.extraLightGrey),
             ),
             TextButton(
               child: Text(
-                'resend code',
+                'Please try later with a valid phone number and OTP code.',
                 style: AppTextStyle.onBoardingButton,
               ),
-              onPressed: () {
-                onBoardingController.authState.value = 'loading';
-                pageController.jumpToPage(3);
-              },
+              onPressed: () {},
             ),
           ],
         ),

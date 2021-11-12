@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:showroom/app/data/models/product_model.dart';
 import 'package:showroom/app/data/theme/text_theme.dart';
+import 'package:showroom/app/modules/cart/controllers/cart_controller.dart';
 import 'package:showroom/app/modules/product/controllers/product_controller.dart';
 
 class AddToCartButton extends StatelessWidget {
   final ProductModel product;
   AddToCartButton({Key? key, required this.product}) : super(key: key);
   ProductController productController = Get.find();
+  CartController cartController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +19,11 @@ class AddToCartButton extends StatelessWidget {
           Get.snackbar('Select Size',
               'to add item to your cart you need to select your size.');
         } else {
-          // Add item to cart
-          Get.snackbar('ADDED', 'CART +1');
+          cartController.addProduct(
+              product, productController.selectedSize.value);
+
+          Get.snackbar(
+              'Product Added', 'You have added ${product.name} to the cart');
         }
       },
       child: Container(

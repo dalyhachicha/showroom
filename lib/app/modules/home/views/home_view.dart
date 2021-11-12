@@ -11,6 +11,7 @@ import 'widgets/home_top_section_widget.dart';
 
 class HomeView extends StatelessWidget {
   HomeController homeController = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

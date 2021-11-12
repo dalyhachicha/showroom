@@ -9,6 +9,21 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:showroom/app/data/theme/color_theme.dart';
 
 class AppTextStyle {
+  static TextStyle cartPageTotalText = GoogleFonts.montserrat(
+    fontSize: 24,
+    fontWeight: FontWeight.w600,
+  );
+  static TextStyle cartPageProductQte = TextStyle(fontSize: 16);
+  static TextStyle cartPageProductPrice = GoogleFonts.montserrat(
+    fontWeight: FontWeight.bold,
+    fontSize: 18,
+  );
+  static TextStyle cartPageProductSize =
+      GoogleFonts.montserrat(color: AppColors.grey);
+  static TextStyle cartPageProductName = GoogleFonts.montserrat(
+    fontWeight: FontWeight.w600,
+    fontSize: 16,
+  );
   static TextStyle productPagePriceLabel = GoogleFonts.montserrat(
     fontWeight: FontWeight.w600,
     fontSize: 18,

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:showroom/app/modules/cart/controllers/cart_controller.dart';
 
 class ProductController extends GetxController {
   var activeIndex = 0.obs;

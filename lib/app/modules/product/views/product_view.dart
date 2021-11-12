@@ -11,7 +11,7 @@ import '../controllers/product_controller.dart';
 import 'widgets/add_to_cart_btn.dart';
 
 class ProductView extends GetView<ProductController> {
-  ProductController productController = Get.find();
+  final ProductController productController = Get.find();
   final ProductModel product = Get.arguments[0];
   @override
   Widget build(BuildContext context) {
