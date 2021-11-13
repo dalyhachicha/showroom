@@ -1,4 +1,3 @@
-import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:showroom/app/data/services/theme_service.dart';
 import 'package:showroom/app/data/theme/color_theme.dart';
@@ -14,7 +13,7 @@ customSnackbar({
     message,
     overlayBlur: 1,
     snackPosition: position,
-    backgroundColor: isDarkMode ? AppColors.darkGrey : AppColors.extraLightGrey,
-    colorText: isDarkMode ? AppColors.extraLightGrey : AppColors.darkGrey,
+    colorText: isDarkMode ? AppColors.darkGrey : AppColors.extraLightGrey,
+    backgroundColor: isDarkMode ? AppColors.lightGrey : AppColors.darkGrey,
   );
 }

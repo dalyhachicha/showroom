@@ -9,6 +9,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:showroom/app/data/theme/color_theme.dart';
 
 class AppTextStyle {
+  static TextStyle historyPageStatus = GoogleFonts.montserrat(
+    fontWeight: FontWeight.w600,
+    color: AppColors.darkGrey,
+  );
   static TextStyle cartPageTotalText = GoogleFonts.montserrat(
     fontSize: 24,
     fontWeight: FontWeight.w600,
@@ -28,6 +32,7 @@ class AppTextStyle {
     fontWeight: FontWeight.w600,
     fontSize: 18,
   );
+
   static TextStyle productPageSizeLabel = GoogleFonts.montserrat(
     fontSize: 14,
     fontWeight: FontWeight.bold,
@@ -36,10 +41,12 @@ class AppTextStyle {
     fontSize: 14,
     fontWeight: FontWeight.bold,
   );
+
   static TextStyle productPageDesc = GoogleFonts.roboto(
     fontSize: 14,
     color: AppColors.grey,
   );
+
   static TextStyle productPageName = GoogleFonts.montserrat(
     fontSize: 22,
     fontWeight: FontWeight.w600,

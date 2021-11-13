@@ -11,13 +11,14 @@ String productModelToJson(ProductModel data) => json.encode(data.toJson());
 
 class ProductModel {
   ProductModel({
+    required this.id,
     required this.name,
     required this.desc,
     required this.price,
     required this.imgUrls,
     required this.sizes,
   });
-
+  String id;
   String name;
   String desc;
   int price;
@@ -25,6 +26,7 @@ class ProductModel {
   List<Size> sizes;
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
+        id: json["id"],
         name: json["name"],
         desc: json["desc"],
         price: json["price"],
@@ -33,6 +35,7 @@ class ProductModel {
       );
 
   Map<String, dynamic> toJson() => {
+        "id": id,
         "name": name,
         "desc": desc,
         "price": price,

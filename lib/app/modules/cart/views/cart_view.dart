@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:showroom/app/data/theme/color_theme.dart';
 import 'package:showroom/app/data/theme/text_theme.dart';
 import 'package:showroom/app/modules/cart/views/widgets/cart_product_card.dart';
+import 'package:showroom/app/routes/app_pages.dart';
 import '../controllers/cart_controller.dart';
 import '../views/widgets/appbar_counter_widget.dart';
 
@@ -60,7 +61,25 @@ class CartView extends GetView<CartController> {
                 ],
               )
             : Center(
-                child: Text('Empty'),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Your cart is empty.",
+                        style: AppTextStyle.productPageName),
+                    SizedBox(height: 12),
+                    ElevatedButton(
+                      onPressed: () {
+                        Get.toNamed(Routes.HOME);
+                      },
+                      child: Text(
+                        'Shop',
+                        style: AppTextStyle.productPageName.copyWith(
+                          fontSize: 16,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
       ),
     );
@@ -131,21 +150,26 @@ class CartView extends GetView<CartController> {
                         ),
                       ),
                     ),
-                    Container(
-                      child: Center(
-                        child: Text(
-                          'Next >',
-                          style: AppTextStyle.productPagePriceLabel.copyWith(
-                              color: Get.theme.colorScheme.background),
+                    GestureDetector(
+                      onTap: () {
+                        cartController.addOrder();
+                      },
+                      child: Container(
+                        child: Center(
+                          child: Text(
+                            'Next >',
+                            style: AppTextStyle.productPagePriceLabel.copyWith(
+                                color: Get.theme.colorScheme.background),
+                          ),
                         ),
-                      ),
-                      width: 170,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: Get.theme.colorScheme.onBackground,
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(12),
-                          topLeft: Radius.circular(12),
+                        width: 170,
+                        height: 60,
+                        decoration: BoxDecoration(
+                          color: Get.theme.colorScheme.onBackground,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(12),
+                            topLeft: Radius.circular(12),
+                          ),
                         ),
                       ),
                     ),

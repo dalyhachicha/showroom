@@ -9,8 +9,8 @@ import 'package:showroom/app/modules/widgets/custom_snackbar.dart';
 class AddToCartButton extends StatelessWidget {
   final ProductModel product;
   AddToCartButton({Key? key, required this.product}) : super(key: key);
-  ProductController productController = Get.find();
-  CartController cartController = Get.find();
+  final ProductController productController = Get.find();
+  final CartController cartController = Get.find();
 
   @override
   Widget build(BuildContext context) {

@@ -136,6 +136,7 @@ class CustomDrawer extends StatelessWidget {
         break;
       case 3:
         // HISTORY
+        Get.toNamed(Routes.HISTORY);
         break;
       case 4:
         UserModel().logout();

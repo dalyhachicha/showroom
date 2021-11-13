@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import 'package:showroom/app/modules/cart/bindings/cart_binding.dart';
 import 'package:showroom/app/modules/cart/views/cart_view.dart';
+import 'package:showroom/app/modules/history/bindings/history_binding.dart';
+import 'package:showroom/app/modules/history/views/history_view.dart';
 import 'package:showroom/app/modules/home/bindings/home_binding.dart';
 import 'package:showroom/app/modules/home/views/home_view.dart';
 import 'package:showroom/app/modules/onboarding/bindings/onboarding_binding.dart';
@@ -43,6 +45,11 @@ class AppPages {
       name: _Paths.CART,
       page: () => CartView(),
       binding: CartBinding(),
+    ),
+    GetPage(
+      name: _Paths.HISTORY,
+      page: () => HistoryView(),
+      binding: HistoryBinding(),
     ),
   ];
 }
