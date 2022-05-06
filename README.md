@@ -15,7 +15,11 @@ OTP: 123456
 - cache loaded images 
 
 [FIX] order histroy view overflow
+
 [FIX] adding same item to cart with different size overrides the old one (should add same item to card with different size)
+
 [FIX] search feature in home drawer (not working for unknown reason)
+
 [FIX] denying of position permission crashes the app (sometimes?)
+
 [FIX] project structure (use get_cli)
