@@ -1,9 +1,26 @@
 # Showroom (Live-Data Prototype)
 E-commerce mobile app using Flutter (GetX)
 
+
+
+## Screens
+- Home: <br>
+List products from firestore database<br>
+- Product: <br>
+Preview item pictures and details<br>
+add item to cart<br>
+- Cart: <br>
+preview cart items<br>
+add/substract item quantity<br>
+remove item<br>
+cart total<br>
+- History:<br>
+list orders submitted with this account with details (id, order date, total and status)<br>
+
 ## Features
-- Dynamic theme (Light/Dark Modes)
-- 
+- Dynamic themes (Light/Dark Modes)<br>
+- Custom slider in item page<br>
+- OTP authentication (firebase)<br>
 
 ## IMPORTANT for testing/demo
 If firebase auth refuse to sed more OTP SMS verifications, use:
