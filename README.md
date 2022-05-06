@@ -5,10 +5,10 @@ E-commerce mobile app using Flutter (GetX)
 
 ## Screens
 - Home: <br>
-List products from firestore database<br>
+- List products from firestore database<br>
 - Product: <br>
-Preview item pictures and details<br>
-add item to cart<br>
+- Preview item pictures and details<br>
+- add item to cart<br>
 - Cart: <br>
 preview cart items<br>
 add/substract item quantity<br>
