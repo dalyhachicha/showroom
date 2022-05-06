@@ -5,7 +5,7 @@ E-commerce mobile app using Flutter (GetX)
 - Dynamic theme (Light/Dark Modes)
 - 
 
-## !IMPORTANT
+## IMPORTANT for testing/demo
 If firebase auth refuse to sed more OTP SMS verifications, use:
 mobile number: +216 24 077 446
 OTP: 123456
