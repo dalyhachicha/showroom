@@ -5,7 +5,7 @@ E-commerce mobile app using Flutter (GetX)
 - If firebase auth refuse to sed more OTP SMS verifications, use: <br>
 phone number: +216 24 077 446 | verification code: 123456<br>
 phone number: +216 55 488 678	| verification code: 654321<br>
-- To generate apk run (in project base folder)<br>
+- To generate APKs run (in project base folder)<br>
 > flutter build apk --split-per-abi <br>
 OR<br>
 > flutter build apk 
