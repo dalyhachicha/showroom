@@ -19,10 +19,9 @@ class SingleProductWidget extends StatelessWidget {
           color: Theme.of(context).colorScheme.onBackground, //Colors.black45
           borderRadius: BorderRadius.circular(12),
         ),
-        child: Column(
+        child: Wrap(
           children: [
             Container(
-              height: 190,
               child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(12),
@@ -34,23 +33,28 @@ class SingleProductWidget extends StatelessWidget {
                     fit: BoxFit.fitWidth,
                   )),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    product.name,
-                    style: AppTextStyle.productCardTitle.copyWith(
-                        color: Theme.of(context).colorScheme.background),
+            Wrap(
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        product.name,
+                        style: AppTextStyle.productCardTitle.copyWith(
+                            color: Theme.of(context).colorScheme.background),
+                      ),
+                      Text(
+                        '${product.price} DT',
+                        style: AppTextStyle.productCardPrice.copyWith(
+                            color: Theme.of(context).colorScheme.background),
+                      ),
+                    ],
                   ),
-                  Text(
-                    '${product.price} DT',
-                    style: AppTextStyle.productCardPrice.copyWith(
-                        color: Theme.of(context).colorScheme.background),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),

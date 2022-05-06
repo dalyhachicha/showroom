@@ -31,7 +31,7 @@ class CartView extends GetView<CartController> {
       ),
       body: Obx(
         () => cartController.products.isNotEmpty
-            ? Stack(
+            ? Column(
                 children: [
                   Obx(
                     () => SizedBox(
@@ -90,93 +90,88 @@ class CartView extends GetView<CartController> {
       color: Get.theme.colorScheme.background,
       child: Column(
         children: [
-          Column(
-            children: [
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 12),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Row(
                   children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Subtotal: ',
-                          style: AppTextStyle.cartPageProductSize
-                              .copyWith(fontSize: 16),
-                        ),
-                        Text(
-                          '${cartController.subtotal} dt',
-                          style: AppTextStyle.cartPageTotalText
-                              .copyWith(fontSize: 16),
-                        ),
-                      ],
+                    Text(
+                      'Subtotal: ',
+                      style: AppTextStyle.cartPageProductSize
+                          .copyWith(fontSize: 16),
                     ),
-                    Row(
-                      children: [
-                        Text(
-                          'Delivery: ',
-                          style: AppTextStyle.cartPageProductSize
-                              .copyWith(fontSize: 16),
-                        ),
-                        Text(
-                          '7 dt',
-                          style: AppTextStyle.cartPageTotalText
-                              .copyWith(fontSize: 16),
-                        ),
-                      ],
+                    Text(
+                      '${cartController.subtotal} dt',
+                      style:
+                          AppTextStyle.cartPageTotalText.copyWith(fontSize: 16),
                     ),
                   ],
                 ),
+                Row(
+                  children: [
+                    Text(
+                      'Delivery: ',
+                      style: AppTextStyle.cartPageProductSize
+                          .copyWith(fontSize: 16),
+                    ),
+                    Text(
+                      '7 dt',
+                      style:
+                          AppTextStyle.cartPageTotalText.copyWith(fontSize: 16),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            height: 78,
+            decoration: BoxDecoration(
+              color: AppColors.lightGrey,
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(12),
+                topLeft: Radius.circular(12),
               ),
-              SizedBox(height: 18),
-              Container(
-                height: 78,
-                decoration: BoxDecoration(
-                  color: AppColors.lightGrey,
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(12),
-                    topLeft: Radius.circular(12),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Obx(
+                  () => Center(
+                    child: Text(
+                      '${cartController.total} DT',
+                      style: AppTextStyle.cartPageTotalText,
+                    ),
                   ),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Obx(
-                      () => Center(
-                        child: Text(
-                          '${cartController.total} DT',
-                          style: AppTextStyle.cartPageTotalText,
-                        ),
+                GestureDetector(
+                  onTap: () {
+                    cartController.addOrder();
+                  },
+                  child: Container(
+                    child: Center(
+                      child: Text(
+                        'Next >',
+                        style: AppTextStyle.productPagePriceLabel
+                            .copyWith(color: Get.theme.colorScheme.background),
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        cartController.addOrder();
-                      },
-                      child: Container(
-                        child: Center(
-                          child: Text(
-                            'Next >',
-                            style: AppTextStyle.productPagePriceLabel.copyWith(
-                                color: Get.theme.colorScheme.background),
-                          ),
-                        ),
-                        width: 170,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: Get.theme.colorScheme.onBackground,
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(12),
-                            topLeft: Radius.circular(12),
-                          ),
-                        ),
+                    width: 170,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: Get.theme.colorScheme.onBackground,
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(12),
+                        topLeft: Radius.circular(12),
                       ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),

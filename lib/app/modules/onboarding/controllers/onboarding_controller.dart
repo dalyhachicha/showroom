@@ -74,6 +74,7 @@ class OnboardingController extends GetxController {
 
   // save user to firebase document ('users')
   saveUserToFirebase() {
+    print("HERE");
     var userData = userModel.toJson();
     collectionReference
         .add(userData)

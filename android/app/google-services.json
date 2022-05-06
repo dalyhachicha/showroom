@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "737152479688-62ans9jgllc9n2rq4b3eg5r40s0f2tvb.apps.googleusercontent.com",
+          "client_id": "737152479688-k0li2g9hrai9mdftvgh44li7j4g5rqj9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.cleancode.showroom",
-            "certificate_hash": "2a2c6df427000a8d3cb94d85530fad029ada02ae"
+            "certificate_hash": "572ced3c9d1865949add71f401da34f4ae09c13b"
           }
         },
         {
